@@ -11,11 +11,8 @@ class Section(models.Model):
 
 class Post (models.Model):
     title=models.CharField(max_length=200)
-<<<<<<< HEAD
-    content= RichTextField()
-=======
+
     content=RichTextField()
->>>>>>> 4d484ae09a613278b4c566d2bd0b84077eaa2bc4
     date=models.DateTimeField(default=datetime.now)
     img_path=models.CharField(max_length=200)
     section_name=models.ForeignKey(Section)

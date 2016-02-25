@@ -5,5 +5,5 @@ from models import Post
 
 def index(request):
     post = Post.objects.get(id=1)
-    context = { 'post' :post}
+    context = {'post':post}
     return render(request,'index.html',context)

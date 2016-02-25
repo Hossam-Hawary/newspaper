@@ -7,5 +7,4 @@ urlpatterns = [
 
     url(r'index/',views.index),
 
-
 ]

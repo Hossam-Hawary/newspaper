@@ -8,8 +8,6 @@ from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect,HttpResponse
 from django.template import RequestContext
-
-
 @csrf_protect
 def register(request):
     if request.method == 'POST':

@@ -6,7 +6,7 @@ from ckeditor.fields import RichTextField
 
 # Create your models here.
 
-class Section(models.Model):
+class Section (models.Model):
     section_name=models.CharField(max_length=100)
 
 class Post (models.Model):

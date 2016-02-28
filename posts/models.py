@@ -27,4 +27,6 @@ class Post (models.Model):
 class tags(models.Model):
     tag_name=models.CharField(max_length=50)
     post_id=models.ForeignKey(Post)
+    def __str__(self):
+        return self.tag_name
     

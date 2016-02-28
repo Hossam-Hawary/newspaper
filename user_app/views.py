@@ -23,8 +23,6 @@ def register(request):
             user.first_name=form.cleaned_data['first_name']
             user.last_name=form.cleaned_data['last_name']
             user.save()
-
-
             return HttpResponseRedirect('/user_app/register/success/')
     else:
         form = UserCreationForm()
@@ -33,11 +31,8 @@ def register(request):
     })
     request.session['age'] = 24
     request.session['fav_color'] = "purple"
-    return render_to_response(
-    'register.html',
-    variables,
-    )
+    return render_to_response( 'register.html', variables,)
 def register_success(request):
-    return HttpResponse("registration Done")
+    return HttpResponse("Registration Successfully Done")
 
 

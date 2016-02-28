@@ -1,26 +1,10 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.paginator import Paginator
 from django.shortcuts import render
-from models import Post,Section
+from models import Post,Section,tags
 # Create your views here.
-def index(request):
-
-	post = Post.objects.get(id=2)
-	context = {'post':post}
-	return render(request,'index.html',context)
-
-def home(request):
-
-	posts = Post.objects.all().order_by('-date') #3shan t get desending
-	context = {'posts':posts}
-	return render(request,'home.html',context)
 
 
-def details(request,section_num):
-	section = Section.objects.filter(id=section_num)
-	posts = Post.objects.filter(section_name_id= section_num)
-	context = {'section':section ,'posts': posts}
-	return render(request,'detail.html',context)
 
 def index_pag(request):
 	queryset_list = Post.objects.all().order_by('-date') #3shan t get desending
@@ -57,7 +41,10 @@ def index_pag1(request,section_num):
 
 def postt(request,question_num):
 	posts = Post.objects.filter(id= question_num)
+	#tags=tags.objects.filter(post_id=question_num)
+	#context = {'posts': posts,'tags':tags}
 	context = {'posts': posts}
+
 	return render(request,'post.html',context)
 
 

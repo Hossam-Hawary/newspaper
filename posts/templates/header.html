@@ -106,18 +106,18 @@
       margin-bottom: 0;
       background-color: #2d2d30;
       border: 0;
-      font-size: 11px !important;
+      font-size: 11px ;
       letter-spacing: 4px;
       opacity: 0.9;
   }
   .navbar li a, .navbar .navbar-brand { 
-      color: #d5d5d5 !important;
+      color: #d5d5d5 ;
   }
   .navbar-nav li a:hover {
-      color: #fff !important;
+      color: #fff ;
   }
   .navbar-nav li.active a {
-      color: #fff !important;
+      color: #fff ;
       background-color: #29292c !important;
   }
   .navbar-default .navbar-toggle {
@@ -155,30 +155,30 @@
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<nav class="navbar navbar-default navbar-fixed-top">
+
   <div class="container-fluid">
+
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#myPage">LOG IN </a>
-      <a class="navbar-brand" href="#myPage">LOG OUT </a>
-      <a class="navbar-brand" href="#myPage">SIGN OUT</a>
+     
+
+      <a  href="/user_app/" class="navbar-brand" >LOG IN </a>
+      <a class="navbar-brand" href="#">LOG OUT </a>
+      <a class="navbar-brand" href="/user_app/register">SIGN UP</a>
     </div>
      <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href=http://localhost:8000/posts/1/details>SPOETS</a></li>
-        <li><a href="#band">Politics</a></li>
-        <li><a href="#tour">Fashion</a></li>
-        <li><a href="#contact">HEALTH</a></li>
+        <li><a href="/posts/1/section">SPOETS</a></li>
+        <li><a href="/posts/2/section">Politics</a></li>
+        <li><a href="/posts/3/section">Fashion</a></li>
+        <li><a href="/posts/4/section">HEALTH</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE</a>
          
         </li>
         <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
       </ul>
     </div>
   </div>
-</nav>
+
+</body>
+</html>

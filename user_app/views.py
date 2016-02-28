@@ -35,4 +35,8 @@ def register(request):
 def register_success(request):
     return HttpResponse("Registration Successfully Done")
 
-
+@login_required
+def home(request):
+    return render_to_response(
+    'home1.html',
+    { 'user': request.user,'age': request.session['age']})

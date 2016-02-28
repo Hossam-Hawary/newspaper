@@ -14,7 +14,7 @@
             <tr><th><label for="id_password">Password:</label></th><td>{{ form.password }}</td></tr>
         </table>
         <input type="submit" value="Login" />
-        <input type="hidden" name="next" value="/home" />
+        <input type="hidden" name="next" value="/user_app/home" />
     </form>
     <a href="/user_app/register">Register</a>
 </body>

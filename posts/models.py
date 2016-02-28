@@ -7,7 +7,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 
-class Section(models.Model):
+class Section (models.Model):
     section_name=models.CharField(max_length=100)
     def __str__(self):
         return self.section_name

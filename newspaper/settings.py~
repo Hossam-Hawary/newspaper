@@ -82,7 +82,11 @@ DATABASES = {
        'ENGINE': 'django.db.backends.mysql',
         'NAME':'news',
         'USER':'root',
+<<<<<<< HEAD
         'PASSWORD':'12345',
+=======
+        'PASSWORD':'admin',
+>>>>>>> bbf1d4ab7fb47d7eb3a738529710144aa3779faa
         'HOST':'localhost',
         'PORT':'3306'
     }
@@ -129,6 +133,7 @@ STATIC_URL = '/static/'
 
 CKEDITOR_UPLOAD_PATH = '/uploads/'
 
+<<<<<<< HEAD
 #to increase features of markup language content
  
 CKEDITOR_CONFIGS = {
@@ -137,3 +142,18 @@ CKEDITOR_CONFIGS = {
    }
 }
 
+=======
+# 3shan azwad el features beta3t el mark
+#up lel content
+CKEDITOR_CONFIGS = {
+    'default':{
+    'toolbar':None, 
+    }
+}
+
+
+
+
+
+
+>>>>>>> bbf1d4ab7fb47d7eb3a738529710144aa3779faa

@@ -56,6 +56,7 @@ input[type="password"] {
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 
 
  <div class = "container">
@@ -76,6 +77,20 @@ input[type="password"] {
 		</form>
 	</div>
 </div>
+=======
+  {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    <form method="post" action=".">{% csrf_token %}
+        <table border="0">
+            <tr><th><label for="id_username">Username:</label></th><td>{{ form.username }}</td></tr>
+            <tr><th><label for="id_password">Password:</label></th><td>{{ form.password }}</td></tr>
+        </table>
+        <input type="submit" value="Login" />
+        <input type="hidden" name="next" value="/user_app/home" />
+    </form>
+    <a href="/user_app/register">Register</a>
+>>>>>>> bbf1d4ab7fb47d7eb3a738529710144aa3779faa
 </body>
 </html>
  

@@ -18,8 +18,10 @@ def index_pag(request):
 	except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         	queryset = paginator.page(paginator.num_pages)
-	
-	return render(request, 'home1.html',{"queryset":queryset})
+	user=request.user
+	if user.is_anonymous():
+		user=None
+	return render(request, 'home1.html',{"queryset":queryset,'user':user})
 
 
 def index_pag1(request,section_num):
@@ -36,8 +38,10 @@ def index_pag1(request,section_num):
 	except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         	queryset = paginator.page(paginator.num_pages)
-	
-	return render(request, 'detail.html',{"queryset":queryset , "section" :section})
+	user=request.user
+	if user.is_anonymous():
+		user=None
+	return render(request, 'detail.html',{"queryset":queryset , "section" :section,'user':user})
 
 def postt(request,question_num):
 	posts = Post.objects.filter(id= question_num)

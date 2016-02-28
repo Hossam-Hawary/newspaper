@@ -24,6 +24,13 @@
   .container {
       padding: 80px 120px;
   }
+  #username{
+
+      font-size: 24px;
+            letter-spacing: 7px;
+
+      color: #46b8da;
+  }
   .person {
       border: 10px solid transparent;
       margin-bottom: 25px;
@@ -159,11 +166,17 @@
   <div class="container-fluid">
 
     <div class="navbar-header">
-     
+        {% if user == None %}
+                  <a  href="/user_app/" class="navbar-brand" >LOG IN </a>
+                  <a class="navbar-brand" href="/user_app/register">SIGN UP</a>
 
-      <a  href="/user_app/" class="navbar-brand" >LOG IN </a>
-      <a class="navbar-brand" href="#">LOG OUT </a>
-      <a class="navbar-brand" href="/user_app/register">SIGN UP</a>
+        {% endif %}
+    {% if user != None %}
+              <a class="navbar-brand" href="#">LOG OUT </a>
+        <span id="username">{{ user.get_username}}</span>
+
+    {% endif %}
+
     </div>
      <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">

@@ -24,7 +24,7 @@ def details(request,section_num):
 
 def index_pag(request):
 	queryset_list = Post.objects.all().order_by('-date') #3shan t get desending
-	paginator = Paginator(queryset_list,5)
+	paginator = Paginator(queryset_list,3)
 	page_num=request.GET.get('page')
 	try:
         	queryset = paginator.page(page_num)
@@ -54,6 +54,11 @@ def index_pag1(request,section_num):
         	queryset = paginator.page(paginator.num_pages)
 	
 	return render(request, 'detail.html',{"queryset":queryset , "section" :section})
+
+def postt(request,question_num):
+	posts = Post.objects.filter(id= question_num)
+	context = {'posts': posts}
+	return render(request,'post.html',context)
 
 
 

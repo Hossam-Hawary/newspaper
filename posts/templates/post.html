@@ -3,12 +3,6 @@
  
     {% block data %}
 
-
-<!-- Theme Made By www.w3schools.com - No Copyright -->
-  
-
-
- <!-- Theme Made By www.w3schools.com - No Copyright -->
   <title>Bootstrap Theme The Band</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -94,6 +88,7 @@
   .thumbnail p {
       margin-top: 15px;
       color: #555;
+      font-size: 30px;
   }
   .btn {
       padding: 10px 20px;
@@ -229,62 +224,22 @@
 
     </style>
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-
-   
-   
-    <div class="bg-1">
-  <div class="container text-center">
-    <h3>Posts Magazin</h3>
-    {% for query in queryset %}
-    <img src="{{ query.img_path }}" class="img-circle" alt="Bird" width="350" height="350">
-    {% endfor %}
-
-    <h3>HAYM MAGIZEN</h3>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-     <div id="band" class="container text-center">
-  <h3>NEWS</h3>
-  </div>
- 
-
-<!-- hna el pagenator -->
-
-
-<div>
-<form action="" emthod="GET">
-</form>
-{% for query in queryset %}
-
+{% for pp in posts %}
 <div class="name-box">
 
 
      <div id="band" class="container text-center">
-  <h3>{{query.title}}</h3>
+  <h3>{{pp.title}}</h3>
   </div>
  <div class="row text-center">
  
   <div class="col-sm-4">
     <div class="thumbnail">
-      <img src="{{ query.img_path }}" alt="{{ query.title }}">
-      <p><strong>{{ query.title }}</strong></p>
-      <p>{{ query.section_name }}</p>
+      <img src="{{ pp.img_path }}" alt="{{ pp.title }}">
+      <p ><strong>{{ pp.title }}</strong></p>
+      <p>{{ pp.section_name }}</p>
+     <p>{{ pp.content }}</p>
+      <p>{{ pp.date }}</p>
       
     </div>
   </div>
@@ -292,30 +247,34 @@
  </div>
 
 </div>
-
 {% endfor %}
 
-<div align="center" class="pagination">
-    <span class="step-links">
-        {% if queryset.has_previous %}
-            <a href="?page={{  queryset.previous_page_number }}">previous</a>
-        {% endif %}
 
-        <span class="current">
-            Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
-        </span>
-
-        {% if queryset.has_next %}
-            <a href="?page={{ queryset.next_page_number }}">next</a>
-        {% endif %}
-    </span>
+<!-- Container (Contact Section) -->
+<div class="container-fluid bg-grey">
+  <h2 class="text-center">COMMENTS</h2>
+  <div class="row">
+    <div class="col-sm-5">
+       
+    </div>
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn btn-default pull-right" type="submit">Send</button>
+        </div>
+      </div>  
+    </div>
+  </div>
 </div>
-
-{{ page.render }}
-</div>
-
-
-
 
 
 

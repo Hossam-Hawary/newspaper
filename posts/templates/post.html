@@ -258,7 +258,8 @@
       <p>{{ pp.date }}</p>
       <br> <br>
         {% if user != None %}
-  <div class="comments_wrapper" id="comments">
+
+ <div class="comments_wrapper" id="comments">
 
         {% render_comment_list   for pp  %}
 
@@ -266,6 +267,7 @@
             {% render_comment_form for pp %}
         </div>
     </div>
+
 
 {% endif %}
 
@@ -287,12 +289,6 @@
  </body>
 
     {% endblock %}
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 89717f764b994742c6ab3ea4e091dc0219aa333b
 
      {% block javascript %}
 

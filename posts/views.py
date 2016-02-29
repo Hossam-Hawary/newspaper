@@ -46,7 +46,11 @@ def index_pag1(request,section_num):
 def postt(request,question_num):
 	posts = Post.objects.filter(id= question_num)
 	tags2=tags.objects.filter(post_id=question_num)
-	context = {'posts': posts,'tags2':tags2}
+	user=request.user
+	if user.is_anonymous():
+		user=None
+	context = {'posts': posts,'tags2':tags2,'user':user}
+
 	return render(request,'post.html',context)
 
 

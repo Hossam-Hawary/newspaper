@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from user_app.forms import *
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
+from django.contrib.auth import logout, login,authenticate
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect,HttpResponse
@@ -23,6 +23,9 @@ def register(request):
             user.first_name=form.cleaned_data['first_name']
             user.last_name=form.cleaned_data['last_name']
             user.save()
+            user=authenticate(username=form.cleaned_data['username'],password=form.cleaned_data['password1'])
+            if user!=None:
+                login(request,user)
             return HttpResponseRedirect('/home')
     else:
         form = UserCreationForm()

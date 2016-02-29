@@ -63,12 +63,16 @@ def postt(request,question_num):
 
 
 def tag(request,tag_id):
-    tagobj = tags.objects.filter( id= tag_id)
-    posts_ids = {}
-    for pid in tagobj:
-         posts_ids.append(pid.post_id_id)
+	posts_id = tags.objects.value_lit('post_id',flat=True).filter(id=tag_id)
+	list_of_ids = {}
+	for i in posts_id:
+		post = Post.objects.get(id=posts_id[i])
+		list_of_ids.append(post)
+		context = {'list_of_ids':list_of_ids}
+		return render(request,'',context)
 
 
 
-    context = {'tag': post}
-    return render(request,'demo.html',context)
+
+
+

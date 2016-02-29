@@ -29,6 +29,17 @@ class UserCreationForm(forms.ModelForm):
                 code='password_mismatch', #the error that intialized above
             )
         return password2
+
+
+#uniqe userName 
+    def clean_username(self):
+        try:
+            user = User.objects.get(username__iexact=self.cleaned_data['username'])
+        except User.DoesNotExist:
+            return self.cleaned_data['username']
+        raise forms.ValidationError(_("The username already exists. Please try another one."))
+ 
+
 # overrided method !!
     def save(self, commit=True):
         user = super(UserCreationForm, self).save(commit=False)
@@ -36,7 +47,7 @@ class UserCreationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
-
+#uniqe mail
     def clean_email(self):
     	email = self.cleaned_data.get('email')
     	username = self.cleaned_data.get('username')

@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.paginator import Paginator
 from django.shortcuts import render
-from models import Post,Section
+from models import Post,Section,tags
 # Create your views here.
 def index(request):
 
@@ -62,3 +62,13 @@ def postt(request,question_num):
 
 
 
+def tag(request,tag_id):
+    tagobj = tags.objects.filter( id= tag_id)
+    posts_ids = {}
+    for pid in tagobj:
+         posts_ids.append(pid.post_id_id)
+
+
+
+    context = {'tag': post}
+    return render(request,'demo.html',context)

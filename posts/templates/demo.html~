@@ -1,0 +1,14 @@
+<html>
+	<body>
+
+	<ul>
+
+		{% for p in post%}
+
+		<center><header> {{ p.title }}</header></center>
+	
+		{% endfor %}
+          <ul>
+      
+  </body>
+</html>

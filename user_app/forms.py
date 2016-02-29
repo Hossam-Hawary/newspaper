@@ -37,7 +37,7 @@ class UserCreationForm(forms.ModelForm):
             user = User.objects.get(username__iexact=self.cleaned_data['username'])
         except User.DoesNotExist:
             return self.cleaned_data['username']
-        raise forms.ValidationError(_("The username already exists. Please try another one."))
+        raise forms.ValidationError("The username already exists. Please try another one.")
  
 
 # overrided method !!
@@ -48,10 +48,9 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user
 #uniqe mail
-    def clean_email(self):
+def clean_email(self):
     	email = self.cleaned_data.get('email')
-    	username = self.cleaned_data.get('username')
-   	print User.objects.filter(email=email).count()
+        print User.objects.filter(email=email).count()
     	if email and User.objects.filter(email=email).count() > 0:
-        		raise forms.ValidationError(u'This email address is already registered.')
-    	return email
+            raise forms.ValidationError("This email address is already registered.")
+        return email

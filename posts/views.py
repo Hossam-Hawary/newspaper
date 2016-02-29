@@ -51,3 +51,31 @@ def postt(request,question_num):
 
 
 
+def tag(request,tag_id):
+	tag_obj=tags.objects.get(id=tag_id)
+	posts_id = tags.objects.values_list('post_id',flat=True).filter(tag_name=tag_obj.tag_name)
+	queryset_list = []
+	for i in posts_id:
+		post = Post.objects.get(id=i)
+		queryset_list.append(post)
+	paginator = Paginator(queryset_list,5)
+	page_num=request.GET.get('page')
+	try:
+        	queryset = paginator.page(page_num)
+	except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        	queryset = paginator.page(1)
+	except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        	queryset = paginator.page(paginator.num_pages)
+	user=request.user
+	if user.is_anonymous():
+		user=None
+	return render(request, 'tag.html',{"queryset":queryset ,'user':user})
+
+
+
+
+
+
+

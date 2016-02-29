@@ -6,9 +6,9 @@ from user_app.views import *
 urlpatterns = [
 
     url(r'^register/$', views.register),
-    #url(r'^home/$', views.home),
+
     url(r'^$', 'django.contrib.auth.views.login'),
-    url(r'^home/$', views.home),
+    url(r'^logout/$', views.logout_page),
     
     
 

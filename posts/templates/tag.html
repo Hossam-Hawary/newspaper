@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+
+    {% block data %}
+
+
+
+<style >
+ .name-box{
+           padding: 40px;
+           padding-left:20px;
+           padding-right: 40px;
+            font-size: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 1200px;
+        }
+        .spacer{
+            clear:both;
+            height: 10px;
+        }
+
+        .page, .prev, .next{
+            display: inline-block;
+            padding: 3px 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            background: #eee;
+            font-weight: bold;
+        }
+        .page:hover, .prev:hover, .next:hover{
+            background: #333;
+        }
+        .page.current{
+            background: #333;
+            color: white;
+        }
+        .page.disabled, .prev.disabled, .next.disabled{
+            color: #ddd;
+            cursor: default;
+        }
+        .ss{
+           border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 800px;
+
+        }
+
+
+
+</style>
+
+
+
+
+{% for query in queryset %}
+
+<div class="name-box">
+
+
+                      <div id="band" class="container text-center">
+                      <h3>{{query.title}}</h3>
+                      </div>
+ <div class="row text-center">
+
+        <div class="col-sm-4">
+                       <div class="thumbnail">
+                       <img src="{{ query.img_path }}" alt="{{ query.title }}">
+                        <p><strong>{{ query.title }}</strong></p>
+                        <p>{{ query.section_name }}</p>
+                        <a href="/posts/{{query.id}}/post"><button class="btn">Read More</button></a>
+                       </div>
+         </div>
+
+   </div>
+
+
+</div>
+
+{% endfor %}
+
+<div class="pagination">
+        <span class="step-links">
+        {% if queryset.has_previous %}
+            <a href="?page={{  queryset.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
+        </span>
+
+        {% if queryset.has_next %}
+            <a href="?page={{ queryset.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% if user == None %}
+<h1>useeeeeeeeeeeeeeeeeeer</h1>
+{% endif %}
+{{ page.render }}
+
+
+
+
+
+    {% endblock %}

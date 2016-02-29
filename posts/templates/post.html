@@ -245,13 +245,13 @@
 
 
      <div id="band" class="container text-center">
-  <h3>{{pp.title}}</h3>
+
   </div>
  <div class="row text-center">
  
   <div class="col-sm-4">
     <div class="thumbnail">
-      <img src="{{ pp.img_path }}" alt="{{ pp.title }}">
+
       <p ><strong>{{ pp.title }}</strong></p>
       <p>{{ pp.section_name }}</p>
      {{ pp.content | safe}}
@@ -278,7 +278,7 @@
 {% endfor %}
  <div >
       {% for tage in tags2 %}
- <a>{{tage.tag_name}}/</a>
+ <a href="/posts/{{tage.id}}/tag">{{tage.tag_name}}/</a>
        
       {% endfor %}
       </div>
@@ -287,9 +287,12 @@
  </body>
 
     {% endblock %}
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 89717f764b994742c6ab3ea4e091dc0219aa333b
 
      {% block javascript %}
 

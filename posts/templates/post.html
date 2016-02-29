@@ -1,6 +1,8 @@
 {% extends "base.html" %}
+{% load threadedcomments_tags %}
 
- 
+
+
     {% block data %}
 
   <title>Bootstrap Theme The Band</title>
@@ -9,6 +11,8 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>s
+
+
 
 
       <style type="text/css">
@@ -44,6 +48,17 @@
       .row.content {height:auto;} 
     }
 
+         textarea{
+             width: 300px;
+             height: 60px;
+
+         }
+         input[type="submit"]{
+             background-color: darkseagreen;
+         }
+         li{
+             border-bottom: 3px solid #fecf71;
+         }
         form{
             padding: 10px 5px;
             border: 1px solid #ddd;
@@ -221,6 +236,9 @@
  
 
     </style>
+<body>
+
+
 
 {% for pp in posts %}
 <div class="name-box">
@@ -238,7 +256,19 @@
       <p>{{ pp.section_name }}</p>
      {{ pp.content | safe}}
       <p>{{ pp.date }}</p>
-      
+      <br> <br>
+        {% if user != None %}
+  <div class="comments_wrapper" id="comments">
+
+        {% render_comment_list   for pp  %}
+
+        <div id="wrap_write_comment">
+            {% render_comment_form for pp %}
+        </div>
+    </div>
+
+{% endif %}
+
     </div>
   </div>
 
@@ -250,40 +280,43 @@
       {% for tage in tags2 %}
  <a>{{tage.tag_name}}/</a>
        
-      {% endfor %} 
+      {% endfor %}
       </div>
 
 
-<!-- Container (Contact Section) -->
-<div class="container-fluid bg-grey">
-  <h2 class="text-center">COMMENTS</h2>
-  <div class="row">
-    <div class="col-sm-5">
-       
-    </div>
-    <div class="col-sm-7">
-     
-      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-      <div class="row">
-        <div class="col-sm-12 form-group">
-        <a href="http://www.google.com">  <button class="btn btn-default pull-right" type="submit">Send</button> </a>
-        </div>
-      </div>  
-    </div>
-  </div>
-</div>
-
-
-
+ </body>
 
     {% endblock %}
 
 
 
 
+     {% block javascript %}
 
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
 
+        function show_reply_form(event) {
+            var $this = $(this);
+            var comment_id = $thisdata('comment-id');
 
+            $('#id_parent').val(comment_id);
+            $('#form-comment').insertAfter($this.closest('.comment'));
+        };
 
+        function cancel_reply_form(event) {
+            $('#id_comment').val('');
+            $('#id_parent').val('');
+            $('#form-comment').appendTo($('#wrap_write_comment'));
+        }
+
+        $.fn.ready(function() {
+            $('.comment_reply_link').click(show_reply_form);
+            $('#cancel_reply').click(cancel_reply_form);
+        })
+
+    </script>
+
+{% endblock %}
 
 

@@ -167,9 +167,8 @@
 
     <div class="navbar-header">
         {% if user == None %}
-                  <a  href="/user_app/" class="navbar-brand" >LOG IN </a>
-                  <a class="navbar-brand" href="/user_app/register">SIGN UP</a>
-
+            <a  href="/user_app/" class="navbar-brand" >LOG IN </a>
+            <a class="navbar-brand" href="/user_app/register">SIGN UP</a>
         {% endif %}
     {% if user != None %}
               <a class="navbar-brand" href="/user_app/home/">LOG OUT </a>

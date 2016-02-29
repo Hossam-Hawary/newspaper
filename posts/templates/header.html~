@@ -172,7 +172,7 @@
 
         {% endif %}
     {% if user != None %}
-              <a class="navbar-brand" href="/user_app/logout/">LOG OUT </a>
+              <a class="navbar-brand" href="logout/">LOG OUT </a>
         <span id="username">{{ user.get_username}}</span>
 
     {% endif %}
@@ -180,13 +180,10 @@
     </div>
      <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-
-
         <li><a href="/posts/1/section">SPOETS</a></li>
         <li><a href="/posts/2/section">Politics</a></li>
         <li><a href="/posts/3/section">Fashion</a></li>
         <li><a href="/posts/4/section">HEALTH</a></li>
-
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE</a>
          
